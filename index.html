@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cartinhas do Breno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/styles.css?v=dark3" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <span class="bg-orb orb-1"></span>
+    <span class="bg-orb orb-2"></span>
+    <span class="bg-orb orb-3"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <nav class="top-tabs" role="tablist" aria-label="Navegação do site">
+        <button
+          type="button"
+          id="tab-public"
+          class="tab-btn is-active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="view-public"
+        >
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2.5" />
+            <path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Cartinhas</span>
+        </button>
+
+        <button
+          type="button"
+          id="tab-admin"
+          class="tab-btn"
+          role="tab"
+          aria-selected="false"
+          aria-controls="view-admin"
+        >
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="5" y="11" width="14" height="9" rx="2" />
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+          </svg>
+          <span>Admin</span>
+          <span id="admin-status-dot" class="status-dot" hidden title="Sessão de administrador ativa"></span>
+        </button>
+      </nav>
+
+      <div class="brand-emblem" aria-hidden="true">
+        <svg viewBox="0 0 88 72" width="76" height="62" fill="none">
+          <!-- Sparkles -->
+          <path d="M13 15L14.8 19.2L19 21L14.8 22.8L13 27L11.2 22.8L7 21L11.2 19.2L13 15Z" fill="#FF9BBC" class="sparkle s1" />
+          <path d="M76 10L77.3 13L80.3 14.3L77.3 15.6L76 18.6L74.7 15.6L71.7 14.3L74.7 13L76 10Z" fill="#FFD08A" class="sparkle s2" />
+          <circle cx="77" cy="54" r="2.6" fill="#C9B2FF" class="sparkle s3" />
+          <!-- Cute pink envelope body -->
+          <rect x="18" y="16" width="52" height="38" rx="11" fill="url(#envBody)" stroke="#F9BDD0" stroke-width="1.6" />
+          <path d="M21 20L44 37.5L67 20" stroke="#F49CB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <!-- Glossy pink heart seal -->
+          <circle cx="44" cy="36" r="11.5" fill="url(#sealGrad)" />
+          <path
+            d="M44 41.2C44 41.2 38.4 37.6 38.4 33.7C38.4 31.9 39.8 30.6 41.5 30.6C42.6 30.6 43.5 31.2 44 32.1C44.5 31.2 45.4 30.6 46.5 30.6C48.2 30.6 49.6 31.9 49.6 33.7C49.6 37.6 44 41.2 44 41.2Z"
+            fill="#FFF7FA"
+          />
+          <defs>
+            <linearGradient id="envBody" x1="18" y1="16" x2="70" y2="54" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FFF5F8" />
+              <stop offset="1" stop-color="#FFDCE8" />
+            </linearGradient>
+            <radialGradient id="sealGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(40 31) rotate(48) scale(20)">
+              <stop stop-color="#FF94B5" />
+              <stop offset="0.58" stop-color="#EB5482" />
+              <stop offset="1" stop-color="#BC2D5B" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <h1 class="site-title">Cartinhas do Breno</h1>
+      <p id="site-subtitle" class="site-subtitle">
+        Um cantinho reservado para palavras guardadas com carinho.
+        Escolha seu nome abaixo e digite sua senha para abrir sua carta.
+      </p>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- ABA PÚBLICA: Lista de nomes / envelopes lacrados -->
+    <section id="view-public" role="tabpanel" aria-labelledby="tab-public">
+      <div class="toolbar" aria-label="Filtros de cartinhas">
+        <div class="toolbar-left">
+          <div class="search-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M20 20L16.65 16.65" stroke-linecap="round" />
+            </svg>
+            <input
+              type="search"
+              id="search-input"
+              class="search-input"
+              placeholder="Buscar seu nome..."
+              autocomplete="off"
+              aria-label="Buscar um nome na lista de cartinhas"
+            />
+          </div>
+
+          <select id="sort-select" class="sort-select" aria-label="Ordenar cartinhas">
+            <option value="recentes">Mais recentes</option>
+            <option value="alfabetica">Ordem alfabética (A–Z)</option>
+          </select>
+        </div>
+
+        <span id="letter-count" class="count-pill">0 cartinhas</span>
+      </div>
+
+      <div id="loading-state" class="state-box" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Carregando envelopes...</p>
+      </div>
+
+      <div id="empty-state" class="state-box" hidden>
+        <div class="empty-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="6" y="11" width="36" height="26" rx="4" />
+            <path d="M7 13L24 26L41 13" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h2 id="empty-title">Nenhuma cartinha por aqui ainda</h2>
+        <p id="empty-desc">
+          Em breve o Breno vai publicar novas cartinhas por aqui.
+        </p>
+      </div>
+
+      <div id="envelopes-grid" class="envelopes-grid" role="list"></div>
+    </section>
+
+    <!-- ABA ADMIN: Restrita ao Breno -->
+    <section id="view-admin" role="tabpanel" aria-labelledby="tab-admin" hidden>
+      <!-- Login do Admin -->
+      <div id="admin-login-box" class="admin-login-card">
+        <div class="admin-lock-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="11" width="14" height="9" rx="2" />
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+          </svg>
+        </div>
+        <p class="eyebrow">Acesso restrito</p>
+        <h2 class="modal-serif-title">Área do Administrador</h2>
+        <p class="admin-login-desc">
+          Digite sua senha de administrador para adicionar, editar ou excluir as cartinhas do site.
+        </p>
+
+        <form id="admin-login-form" class="form-stack" novalidate>
+          <div class="field">
+            <label for="admin-login-password">Senha de administrador</label>
+            <div class="password-wrap">
+              <input
+                type="password"
+                id="admin-login-password"
+                class="input"
+                placeholder="Digite a senha do admin..."
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" class="eye-btn" data-toggle-password="admin-login-password" aria-label="Mostrar ou ocultar senha">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9">
+                  <path d="M2 12s3.8-7 10-7 10 7 10 7-3.8 7-10 7S2 12 2 12z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <p id="admin-login-error" class="form-error" role="alert" hidden></p>
+
+          <button type="submit" id="admin-login-submit" class="btn btn-primary btn-full">
+            Entrar no Painel Admin
+          </button>
+        </form>
+      </div>
+
+      <!-- Painel do Admin autenticado -->
+      <div id="admin-panel" hidden>
+        <div class="admin-header-card">
+          <div>
+            <p class="eyebrow">Painel do Breno</p>
+            <h2 class="admin-panel-title">Gerenciar Cartinhas</h2>
+            <p class="admin-panel-desc">
+              Adicione novas pessoas, edite textos e senhas individuais ou remova cartinhas.
+            </p>
+          </div>
+          <div class="admin-header-actions">
+            <button type="button" id="btn-admin-new" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" stroke-linecap="round" />
+              </svg>
+              <span>Nova Cartinha</span>
+            </button>
+            <button type="button" id="btn-admin-change-pass" class="btn btn-outline">
+              Alterar senha do admin
+            </button>
+            <button type="button" id="btn-admin-logout" class="btn btn-ghost">
+              Sair
+            </button>
+          </div>
+        </div>
+
+        <div class="toolbar toolbar-compact">
+          <div class="toolbar-left">
+            <div class="search-wrap">
+              <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="M20 20L16.65 16.65" stroke-linecap="round" />
+              </svg>
+              <input
+                type="search"
+                id="admin-search-input"
+                class="search-input"
+                placeholder="Filtrar cartinhas no painel..."
+                autocomplete="off"
+                aria-label="Filtrar cartinhas no painel administrativo"
+              />
+            </div>
+          </div>
+          <span id="admin-count" class="count-pill">0 cartinhas</span>
+        </div>
+
+        <div id="admin-loading" class="state-box" hidden>
+          <div class="spinner" aria-hidden="true"></div>
+          <p>Carregando painel...</p>
+        </div>
+
+        <div id="admin-empty" class="state-box" hidden>
+          <h2 id="admin-empty-title">Nenhuma cartinha cadastrada</h2>
+          <p id="admin-empty-desc">Clique em "Nova Cartinha" para adicionar o primeiro nome e carta.</p>
+          <button type="button" id="btn-admin-empty-new" class="btn btn-primary">
+            Escrever primeira cartinha
+          </button>
+        </div>
+
+        <div id="admin-list" class="admin-list" role="list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Cartinhas do Breno &middot; Cada carta é protegida por sua própria senha individual.</p>
+    </div>
+  </footer>
+
+  <!-- Modal: Digitar senha individual para abrir cartinha -->
+  <div id="unlock-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="unlock-title" hidden>
+    <div class="modal-card modal-compact">
+      <button type="button" class="modal-close" data-close-modal="unlock-modal" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="unlock-header">
+        <div id="unlock-seal" class="wax-seal wax-seal-lg" data-seal="vinho">
+          <span id="unlock-initials">B</span>
+        </div>
+        <p class="eyebrow">Carta lacrada para</p>
+        <h2 id="unlock-title" class="modal-serif-title">Nome</h2>
+        <p id="unlock-hint" class="hint-chip" hidden></p>
+      </div>
+
+      <form id="unlock-form" class="form-stack" novalidate>
+        <div class="field">
+          <label for="unlock-password">Digite a senha para quebrar o lacre</label>
+          <div class="password-wrap">
+            <input
+              type="password"
+              id="unlock-password"
+              class="input"
+              placeholder="Sua senha secreta..."
+              autocomplete="off"
+              required
+            />
+            <button type="button" class="eye-btn" data-toggle-password="unlock-password" aria-label="Mostrar ou ocultar senha">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9">
+                <path d="M2 12s3.8-7 10-7 10 7 10 7-3.8 7-10 7S2 12 2 12z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <p id="unlock-error" class="form-error" role="alert" hidden></p>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" data-close-modal="unlock-modal">Cancelar</button>
+          <button type="submit" id="unlock-submit" class="btn btn-primary">Abrir Cartinha</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Leitura da cartinha aberta -->
+  <div id="read-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="read-recipient" hidden>
+    <div class="modal-card modal-letter">
+      <button type="button" class="modal-close" id="btn-close-read-x" aria-label="Fechar e lacrar carta">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <article class="letter-sheet">
+        <div class="letter-top-meta">
+          <div class="letter-meta-left">
+            <div id="read-seal" class="wax-seal wax-seal-sm" data-seal="vinho">
+              <span id="read-initials">B</span>
+            </div>
+            <span class="postage-badge">Correio do Carinho &hearts;</span>
+          </div>
+          <span id="read-date" class="letter-date"></span>
+        </div>
+
+        <h2 id="read-recipient" class="letter-salutation">Para Nome,</h2>
+
+        <div id="read-body" class="letter-body"></div>
+
+        <p id="read-signature" class="letter-signature"></p>
+      </article>
+
+      <div class="letter-footer-actions letter-footer-end">
+        <button type="button" id="btn-close-read" class="btn btn-primary btn-sm">Fechar e lacrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal (Admin): Criar ou Editar cartinha -->
+  <div id="editor-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="editor-title" hidden>
+    <div class="modal-card modal-editor">
+      <button type="button" class="modal-close" data-close-modal="editor-modal" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="editor-header">
+        <p class="eyebrow" id="editor-eyebrow">Escrever nova mensagem</p>
+        <h2 id="editor-title" class="modal-serif-title">Nova Cartinha</h2>
+      </div>
+
+      <form id="editor-form" class="form-stack" novalidate>
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="input-nome">Nome da pessoa <span class="req">*</span></label>
+            <input
+              type="text"
+              id="input-nome"
+              class="input"
+              placeholder="Ex.: Ana Clara"
+              maxlength="80"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="input-senha" id="label-senha">Senha desta carta <span class="req">*</span></label>
+            <div class="password-wrap">
+              <input
+                type="password"
+                id="input-senha"
+                class="input"
+                placeholder="Mínimo 3 caracteres"
+                autocomplete="new-password"
+              />
+              <button type="button" class="eye-btn" data-toggle-password="input-senha" aria-label="Mostrar ou ocultar senha">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9">
+                  <path d="M2 12s3.8-7 10-7 10 7 10 7-3.8 7-10 7S2 12 2 12z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </button>
+            </div>
+            <small id="senha-helper" class="field-hint">A pessoa vai usar esta senha para abrir a própria carta.</small>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="input-dica">Dica da senha <span class="opt">(opcional)</span></label>
+            <input
+              type="text"
+              id="input-dica"
+              class="input"
+              placeholder="Ex.: O apelido que você me deu"
+              maxlength="140"
+            />
+          </div>
+
+          <div class="field">
+            <label for="input-assinatura">Assinatura <span class="opt">(opcional)</span></label>
+            <input
+              type="text"
+              id="input-assinatura"
+              class="input"
+              placeholder="Com carinho, Breno"
+              maxlength="80"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Cor do lacre de cera</span>
+          <div class="seal-picker" role="radiogroup" aria-label="Cor do lacre de cera">
+            <button type="button" class="seal-option is-selected" data-seal-choice="vinho" role="radio" aria-checked="true" title="Vinho">
+              <span class="seal-dot" data-seal="vinho"></span>
+              <span>Vinho</span>
+            </button>
+            <button type="button" class="seal-option" data-seal-choice="terracota" role="radio" aria-checked="false" title="Terracota">
+              <span class="seal-dot" data-seal="terracota"></span>
+              <span>Terracota</span>
+            </button>
+            <button type="button" class="seal-option" data-seal-choice="salvia" role="radio" aria-checked="false" title="Sálvia">
+              <span class="seal-dot" data-seal="salvia"></span>
+              <span>Sálvia</span>
+            </button>
+            <button type="button" class="seal-option" data-seal-choice="azul" role="radio" aria-checked="false" title="Azul">
+              <span class="seal-dot" data-seal="azul"></span>
+              <span>Azul</span>
+            </button>
+            <button type="button" class="seal-option" data-seal-choice="dourado" role="radio" aria-checked="false" title="Dourado">
+              <span class="seal-dot" data-seal="dourado"></span>
+              <span>Dourado</span>
+            </button>
+            <button type="button" class="seal-option" data-seal-choice="lavanda" role="radio" aria-checked="false" title="Lavanda">
+              <span class="seal-dot" data-seal="lavanda"></span>
+              <span>Lavanda</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label-row">
+            <label for="input-mensagem">Carta <span class="req">*</span></label>
+            <span id="char-counter" class="char-counter">0 palavras</span>
+          </div>
+          <textarea
+            id="input-mensagem"
+            class="textarea"
+            rows="7"
+            placeholder="Escreva aqui tudo o que você gostaria de dizer..."
+            maxlength="20000"
+            required
+          ></textarea>
+        </div>
+
+        <p id="editor-error" class="form-error" role="alert" hidden></p>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" data-close-modal="editor-modal">Cancelar</button>
+          <button type="submit" id="editor-submit" class="btn btn-primary">Salvar e Lacrar Cartinha</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal (Admin): Alterar senha do administrador -->
+  <div id="admin-pass-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="admin-pass-title" hidden>
+    <div class="modal-card modal-compact">
+      <button type="button" class="modal-close" data-close-modal="admin-pass-modal" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="editor-header">
+        <p class="eyebrow">Segurança</p>
+        <h2 id="admin-pass-title" class="modal-serif-title">Alterar senha do Admin</h2>
+      </div>
+
+      <form id="admin-pass-form" class="form-stack" novalidate>
+        <div class="field">
+          <label for="admin-pass-current">Senha atual do admin</label>
+          <div class="password-wrap">
+            <input
+              type="password"
+              id="admin-pass-current"
+              class="input"
+              placeholder="Senha atual..."
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" class="eye-btn" data-toggle-password="admin-pass-current" aria-label="Mostrar ou ocultar senha">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9">
+                <path d="M2 12s3.8-7 10-7 10 7 10 7-3.8 7-10 7S2 12 2 12z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="admin-pass-new">Nova senha do admin</label>
+          <div class="password-wrap">
+            <input
+              type="password"
+              id="admin-pass-new"
+              class="input"
+              placeholder="Mínimo 6 caracteres"
+              autocomplete="new-password"
+              required
+            />
+            <button type="button" class="eye-btn" data-toggle-password="admin-pass-new" aria-label="Mostrar ou ocultar senha">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9">
+                <path d="M2 12s3.8-7 10-7 10 7 10 7-3.8 7-10 7S2 12 2 12z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <p id="admin-pass-error" class="form-error" role="alert" hidden></p>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" data-close-modal="admin-pass-modal">Cancelar</button>
+          <button type="submit" id="admin-pass-submit" class="btn btn-primary">Atualizar Senha</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast de confirmação -->
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="/app.js?v=dark3"></script>
+</body>
+</html>

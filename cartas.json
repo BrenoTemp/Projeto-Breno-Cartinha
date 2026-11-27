@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1641751a-eb4c-4c62-867c-068f6ee44b5e",
+    "nome": "Exemplo — Melhor Amigo(a)",
+    "mensagem": "Se você está lendo isso, é porque a senha funcionou direitinho!\n\nEssa é uma cartinha de exemplo para mostrar como suas mensagens vão aparecer aqui no Cartinhas do Breno. Você pode escrever quantos parágrafos quiser, contar histórias, deixar lembranças ou agradecer pessoas especiais.\n\nPara editar, excluir este exemplo ou adicionar novas cartinhas, entre na aba Admin lá no topo usando sua senha de administrador.",
+    "assinatura": "Com carinho, Breno",
+    "dica": "A senha de teste é: amizade",
+    "selo": "vinho",
+    "senhaHash": "faada0405203465baf8deb8e9a8fa99d:160f23ec80b2c03d46616a1e47ad10aa6e4e73ce7c6f0ed9aeba610cd8a512604cb2bacab7ce3e9a1cfaf5a782f155da1a0387e01ad536f3fe464fdc52b5b972",
+    "criadaEm": "2026-11-27T12:47:53.214Z",
+    "atualizadaEm": "2026-11-27T12:47:53.214Z"
+  },
+  {
+    "id": "86e4fe11-d219-452a-ba1b-356b2db99c13",
+    "nome": "Exemplo — Família",
+    "mensagem": "Às vezes a correria do dia a dia passa tão rápido que a gente esquece de dizer o quanto certas pessoas são importantes.\n\nPor isso criei este cantinho: para que cada pessoa possa abrir sua própria carta com calma, no seu tempo, sabendo que cada palavra foi escrita pensando nela.\n\nObrigado por estar sempre por perto.",
+    "assinatura": "Um abraço apertado, Breno",
+    "dica": "A senha de teste é: carinho",
+    "selo": "salvia",
+    "senhaHash": "c97dab16364230407b32a35c90ee0fbc:c8fe0fbe3334b4180af4b92ec6c05e6642c511b7f7184cc6fded0fc5efa230d193ae9aaae43339f0bdf40898a55934ecec27f7a24cbbe5a848299088b4512ec8",
+    "criadaEm": "2026-11-27T12:47:53.214Z",
+    "atualizadaEm": "2026-11-27T12:47:53.214Z"
+  }
+]

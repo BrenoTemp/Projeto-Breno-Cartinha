@@ -1,0 +1,12 @@
+{
+  "name": "cartinhas-do-breno",
+  "version": "1.0.0",
+  "description": "Site de cartas pessoais protegidas por senha individual — Cartinhas do Breno",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
